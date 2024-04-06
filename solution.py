@@ -1,8 +1,9 @@
 import gurobipy as gp
 import data_provider as dp
+from collections import namedtuple
 
 class Solution: 
-    def __init__(self, data) -> None:
+    def __init__(self) -> None:
         self.model = gp.Model()
         self.data = dp.read_file_data()
         self._def_variables()
@@ -13,7 +14,9 @@ class Solution:
         chosen_items = self.model.addVars(self.data.items_count, vtype=gp.GRB.BINARY)
         items_quantity = self.model.addVars(self.data.items_count, vtype=gp.GRB.INTEGER)
         
-        self.variables = (chosen_items, items_quantity)
+        Variables = namedtuple('Variables', ['chosen_items', 'items_quantity'])
+        
+        self.variables = Variables(chosen_items, items_quantity) 
     
     def _set_objective(self):
         self.model.setObjective(
@@ -26,7 +29,7 @@ class Solution:
     
     def _set_constraints(self):
         forbidden_pairs_constraint = self.model.addConstrs(
-            (self.variables.chosen_items[i] + self.variables.chosen_items[j] <= 1 
+            (self.variables.chosen_items[i - 1] + self.variables.chosen_items[j - 1] <= 1 
              for i, j in self.data.forbidden_pairs)
         )
         

@@ -1,3 +1,5 @@
+from collections import namedtuple
+
 def read_file_data(): 
     with open('dados.txt') as file: 
         max_weight_supported = int(file.readline())
@@ -19,11 +21,22 @@ def read_file_data():
             raw = line.split()
             forbidden_pairs.append((int(raw[0]), int(raw[1])))
         
-        return 
-        max_weight_supported,
-        items_count,
-        items_weights,
-        items_values,
-        items_available_quantity,
-        forbidden_pairs
+        Data = namedtuple(
+            'Data', [
+                'max_weight_supported',
+                'items_count',
+                'items_weights',
+                'items_values',
+                'items_available_quantity',
+                'forbidden_pairs'
+            ]
+        )
+        
+        return Data(
+            max_weight_supported,
+            items_count,
+            items_weights,
+            items_values,
+            items_available_quantity,
+            forbidden_pairs)
             
