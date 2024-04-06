@@ -10,6 +10,18 @@ class Solution:
         self._set_objective()
         self._set_constraints()
         
+    def print_solution(self):
+        self.model.setParam('OutputFlag', 0)
+        
+        print(f'Valor ótimo: {self.model.objVal}')
+        
+        for i in range(self.data.items_count):
+            if self.variables.chosen_items[i].x:
+                print(f'Item {i}: {self.variables.items_quantity[i].x} unidades')
+                
+    def solve(self):
+        self.model.optimize()
+        
     def _def_variables(self):
         chosen_items = self.model.addVars(self.data.items_count, vtype=gp.GRB.BINARY)
         items_quantity = self.model.addVars(self.data.items_count, vtype=gp.GRB.INTEGER)
@@ -47,21 +59,6 @@ class Solution:
         
         return forbidden_pairs_constraint, max_weight_constraint, items_quantity_constraint
     
-    def print_solution(self):
-        self.model.setParam('OutputFlag', 0)
-        
-        print(f'Valor ótimo: {self.model.objVal}')
-        
-        for i in range(self.data.items_count):
-            if self.variables.chosen_items[i].x:
-                print(f'Item {i}: {self.variables.items_quantity[i].x} unidades')
-                
-    def solve(self):
-        self.model.optimize()
-        self.print_solution()
-        
-
 solution = Solution()
 solution.solve()
-
-
+solution.print_solution()
