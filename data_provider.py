@@ -13,10 +13,17 @@ def read_file_data():
             items_values.append(float(item_infos[1]))
             items_available_quantity.append(int(item_infos[2]))
         
+        forbidden_pairs = []
+        
+        for line in file:
+            raw = line.split()
+            forbidden_pairs.append((int(raw[0]), int(raw[1])))
+        
         return 
         max_weight_supported,
         items_count,
         items_weights,
         items_values,
-        items_available_quantity
+        items_available_quantity,
+        forbidden_pairs
             
