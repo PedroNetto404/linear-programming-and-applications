@@ -49,16 +49,16 @@ class Solution:
             sum(
                 self.variables.chosen_items[i] * self.variables.items_quantity[i] * self.data.items_weights[i]
                 for i in range(self.data.items_count)
-            ) <= self.data.max_weight_supported
+            ) <= self.data.max_weight_supported                                                  
         )
-        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
         items_quantity_constraint = self.model.addConstrs(
-            self.variables.items_quantity[i] <= self.data.items_available_quantity[i]
+            self.variables.items_quantity[i] <= self.data.items_available_quantity[i]                                                                                                                                                                                                                                                                      
             for i in range(self.data.items_count)
         )
         
         return forbidden_pairs_constraint, max_weight_constraint, items_quantity_constraint
-    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 solution = Solution()
 solution.solve()
 solution.print_solution()
