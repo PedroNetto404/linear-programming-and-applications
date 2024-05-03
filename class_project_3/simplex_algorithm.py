@@ -46,6 +46,8 @@ def print_solution(solution, c, used_base):
     c = array_from_matrix(c)
     solution = array_from_matrix(solution)
     
+    print("Solution:")
+    
     optimal_value = 0
     for i in range(len(c)):
         if i in used_base:
