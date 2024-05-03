@@ -1,11 +1,15 @@
 import simplex_algorithm as simplex_algorithm
 import input_reader as ir
 
-A, b, c, base = ir.read_input()
-solution, status, used_base = simplex_algorithm.solve(A, b, c, base)
+inputs = ir.read_input()
 
-if status == "unbounded":
-    print("Ops... The problem is unbounded")
-    exit()
+for problem_name, A, b, c, base in inputs:
+    print(f"\n\nSolving the problem {problem_name}...\n")
+    solution, status, used_base = simplex_algorithm.solve(A, b, c, base)
 
-simplex_algorithm.print_solution(solution, c, used_base)
+    if status == "unbounded":
+        print(f"Ops... The problem {input.name} is unbounded")
+        exit()
+
+    simplex_algorithm.print_solution(solution, c, used_base)
+    print("\n")
