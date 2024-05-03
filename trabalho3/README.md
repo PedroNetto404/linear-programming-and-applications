@@ -18,4 +18,9 @@ Example:
 $ sudo apt-get install python3
 ```
 3. Clone the repo.
-4. Set your problema in the standard form into the ./trabalho3/main.py file.
+4. Set your problema in the standard form into the ./trabalho3/input.json file.
+5. Run the main.py file.
+```bash
+$ python3 main.py
+```
+6. The result will be displayed on the screen.
