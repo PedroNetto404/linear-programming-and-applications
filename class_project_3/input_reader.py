@@ -2,7 +2,6 @@ import json
 import numpy as np
 import os
 
-
 def read_input():
     try:
         file_path = os.path.join(os.path.dirname(__file__), "inputs.json")

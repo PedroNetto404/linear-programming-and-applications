@@ -57,5 +57,34 @@
             3,
             4
         ]
+    },
+    {
+        "problemName" : "Exercício 2 - B",
+        "MatrixOfConstraintCoefficients": [
+            [5, 1, 5, 2, 12, 1, 1, 0, 0],
+            [5, 1, 5, 4, 10, 1, 0, 1, 0],
+            [3, -1, 5, -15, 0, -10, 0, 0, 1]
+        ],
+        "RightHandSide": [
+            [5],
+            [6],
+            [3]
+        ],
+        "ObjectiveFunctionCoefficients": [
+            [-5],
+            [-20],
+            [-35],
+            [-10],
+            [-90],
+            [-20],
+            [0],
+            [0],
+            [0]
+        ],
+        "StartingBase": [
+            6,
+            7,
+            8
+        ]
     }
 ]
