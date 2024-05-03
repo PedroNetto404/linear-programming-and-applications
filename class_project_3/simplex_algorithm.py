@@ -1,4 +1,4 @@
-ZERO = 1e-6
+ZERO = 1e-4
 
 import numpy as np
 
@@ -41,14 +41,19 @@ def solve(A, b, c, base):
     return solve(A, b, c, base)
 
 def print_solution(solution, c, used_base):
+    array_from_matrix = lambda matrix: [x[0] for x in matrix.tolist()]
+    
+    c = array_from_matrix(c)
+    solution = array_from_matrix(solution)
+    
     optimal_value = 0
-    print(c.shape[0])
-    for i in range(c.shape[0]):
+    for i in range(len(c)):
         if i in used_base:
-            print(f"x{i + 1} = {solution[used_base.index(i)]}")    
+            print(f"x{i + 1} = {solution[used_base.index(i)]:.3f};")    
         
             optimal_value += c[i] * solution[used_base.index(i)]
         else:
-            print(f"x{i + 1} = 0")
+            print(f"x{i + 1} = 0.000;")
 
-    print(f"Optimal value: {optimal_value}")
+    print(f"Optimal value: {optimal_value:.3f}")
+    
